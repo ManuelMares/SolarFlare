@@ -85,10 +85,23 @@ def Set_Models(X_train, X_test, y_train, y_test):
     modelsController.Predict_Models(X_test)
     modelsController.Evaluate_Models(y_test)
     modelsController.Print_Models()
+
+def ExportData_ToPCK(X, y ):
+    pd.DataFrame(X).to_pickle("Resources/SolarFlare_Features.pck")
+    pd.DataFrame(y).to_pickle("Resources/SolarFlare_Labels.pck")
+
+def Get_ReadyData():
+    inputsFile  = "Resources/SolarFlare_Features.pck" 
+    labelFile = "Resources/SolarFlare_Labels.pck"
     
+    return load_File(inputsFile), load_File(labelFile)
+
 
 if __name__ == '__main__':
-    X, y = Get_DataSet()
+    #X, y = Get_DataSet()
+    #Export_Data(X, y)    
+    X, y = Get_ReadyData()
+
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = testSize, random_state = 0, shuffle = True)
     Set_Models(X_train, X_test, y_train, y_test)
 

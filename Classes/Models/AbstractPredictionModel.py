@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod 
-import Classes.EvaluateModels as EvaluateModels
+import Classes.ModelsEvaluator as ModelsEvaluator
 
 class PredictionModel(ABC):
 
@@ -12,7 +12,7 @@ class PredictionModel(ABC):
     def __init__(self):
         pass
     
-    def Fit_Model(self, X_train, y_train):             
+    def Fit_Model(self, X_train, y_train):
         self.model.fit(X_train, y_train)
 
     def Predict(self, X_test):
@@ -22,7 +22,7 @@ class PredictionModel(ABC):
     def Evaluate_Model(self, y_test, X_test = None):
         prediction = self.y_pred if X_test is None else self.model.predict(X_test)
 
-        self.meassurements = EvaluateModels.Get_ModelPerformanceMeassurements(y_test, prediction)
+        self.meassurements = ModelsEvaluator.Get_ModelPerformanceMeassurements(y_test, prediction)
 
     def __Get_Meassurements(self):
         obj = ""

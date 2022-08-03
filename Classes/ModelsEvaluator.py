@@ -1,6 +1,6 @@
 from sklearn.metrics import accuracy_score, confusion_matrix
 
-def Get_ModelPerformanceMeassurements(y_test, y_predicted):
+def Get_ModelPerformanceMeasurements(y_test, y_predicted):
     modelMeasurements = {"accuracy": None, 
                         "positivePrecision": None, "negativePrecision": None, 
                         "positiveRecall": None, "negativeRecall": None, 
